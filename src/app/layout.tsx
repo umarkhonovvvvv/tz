@@ -1,11 +1,12 @@
-﻿import "./globals.css";
+﻿"use client"
+import "./globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
   return (
-    <html lang="en" className="dark">
+    <html lang="uk" className="dark">
       <body className="bg-black text-white antialiased">
         <QueryClientProvider client={queryClient}>
           {children}
