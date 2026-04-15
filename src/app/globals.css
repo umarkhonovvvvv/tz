@@ -1,0 +1,16 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.card-custom {
+  background-color: #111827;
+  border: 1px solid #1f2937;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
