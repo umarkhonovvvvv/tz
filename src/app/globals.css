@@ -1,17 +1,39 @@
 ﻿@tailwind base; @tailwind components; @tailwind utilities;
+
+:root {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #00f2ff;
+}
+
 body {
-  background: #000000;
+  background-color: var(--bg);
   color: #ffffff;
-  font-family: "Inter", -apple-system, sans-serif;
+  font-family: "Inter", -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-.premium-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 24px;
-  padding: 40px;
-  transition: all 0.4s ease;
+
+.google-blur {
+  backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(0, 0, 0, 0.7);
 }
-.premium-card:hover {
+
+.modern-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modern-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.text-gradient {
+  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
