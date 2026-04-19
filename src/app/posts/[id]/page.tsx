@@ -13,7 +13,7 @@ export default function PostDetailsPage() {
   if (!post) return null;
 
   return (
-    <main className="min-h-screen bg-[#050b14] p-6 md:p-24 flex items-center justify-center relative overflow-hidden">
+    <main className="min-h-screen bg-[#050b14] p-6 md:p-24 flex items-center justify-center relative overflow-hidden text-white">
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.05),transparent)] pointer-events-none"></div>
       
       <motion.div 
@@ -27,14 +27,15 @@ export default function PostDetailsPage() {
 
         <div className="h-full flex flex-col justify-center">
           <div className="text-cyan-400/50 font-black tracking-[0.5em] uppercase text-[10px] mb-8">Node_System / {id}</div>
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-12">
+          <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-12 uppercase italic">
             {post.title}
           </h1>
-          <div className="w-24 h-1 bg-cyan-400 mb-16"></div>
-          <p className="text-white/40 text-2xl md:text-3xl font-light leading-snug max-w-4xl italic">
+          <div className="w-24 h-1 bg-cyan-400 mb-16 shadow-[0_0_15px_rgba(0,242,255,0.5)]"></div>
+          <p className="text-white/60 text-2xl md:text-3xl font-light leading-snug max-w-4xl">
             {post.body}
           </p>
         </div>
       </motion.div>
     </main>
   );
+}
