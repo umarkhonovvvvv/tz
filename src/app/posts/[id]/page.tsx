@@ -1,36 +1,40 @@
 ﻿"use client"
-import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
-import { fetchPostById } from "@/shared/api/index";
+import { useQuery } from "@tanstack/react-query";
+import { fetchPosts } from "@/shared/api";
+import { motion } from "framer-motion";
 
-export default function PostDetailPage() {
+export default function PostDetailsPage() {
   const { id } = useParams();
   const router = useRouter();
+  const { data: posts } = useQuery({ queryKey: ["posts"], queryFn: fetchPosts });
+  const post = posts?.find((p: any) => p.id.toString() === id);
 
-  const { data: post, isLoading, isError } = useQuery({
-    queryKey: ["post", id],
-    queryFn: () => fetchPostById(id as string),
-    enabled: !!id,
-  });
-
-  if (isLoading) return <div className="p-20 text-center text-white text-xl animate-bounce">Завантаження...</div>;
-  if (isError) return (
-    <div className="p-20 text-center">
-      <h1 className="text-4xl text-red-500 mb-6 font-bold">Пост не знайдено!</h1>
-      <button onClick={() => router.push("/")} className="bg-gray-700 text-white px-6 py-2 rounded">Назад до головної</button>
-    </div>
-  );
+  if (!post) return null;
 
   return (
-    <main className="container mx-auto py-16 px-4 max-w-4xl">
-      <button onClick={() => router.push("/")} className="mb-8 text-blue-400 hover:text-blue-300 flex items-center gap-2">
-        ← Назад
-      </button>
-      <div className="card-custom border-l-4 border-l-blue-600">
-        <h1 className="text-4xl font-bold mb-6 text-white">{post?.title}</h1>
-        <div className="h-1 bg-gray-800 mb-8 w-1/4"></div>
-        <p className="text-gray-300 text-xl leading-relaxed">{post?.body}</p>
-      </div>
+    <main className="min-h-screen bg-[#050b14] p-6 md:p-24 flex items-center justify-center relative overflow-hidden">
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.05),transparent)] pointer-events-none"></div>
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full max-w-6xl aspect-video bg-white/[0.02] backdrop-blur-3xl border border-white/10 rounded-[40px] p-12 md:p-24 relative shadow-2xl"
+      >
+        <button onClick={() => router.back()} className="absolute top-12 left-12 text-cyan-400 font-black tracking-widest text-[10px] uppercase hover:opacity-50 transition-all">
+          ← Back
+        </button>
+
+        <div className="h-full flex flex-col justify-center">
+          <div className="text-cyan-400/50 font-black tracking-[0.5em] uppercase text-[10px] mb-8">Node_System / {id}</div>
+          <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-12">
+            {post.title}
+          </h1>
+          <div className="w-24 h-1 bg-cyan-400 mb-16"></div>
+          <p className="text-white/40 text-2xl md:text-3xl font-light leading-snug max-w-4xl italic">
+            {post.body}
+          </p>
+        </div>
+      </motion.div>
     </main>
   );
-}
