@@ -6,20 +6,17 @@ import { PostCard } from "@/entities/post/ui/post-card";
 export default function HomePage() {
   const { data: posts, isLoading } = useQuery({ queryKey: ["posts"], queryFn: fetchPosts });
   return (
-    <main className="max-w-[1400px] mx-auto py-24 px-8">
-      <div className="mesh-bg"></div>
-      <header className="mb-32">
-        <h1 className="text-[8vw] font-black tracking-tighter leading-none mb-10 italic">
-          DIGITAL<br/><span className="text-cyan-400">ARCHIVE.</span>
-        </h1>
-        <p className="text-white/30 text-xl max-w-xl font-light">Ekotizim boshqaruv tizimi va B2B savdo platformasi modullari.</p>
+    <main className="p-10 md:p-24">
+      <header className="mb-40">
+        <h1 className="text-[15vw] font-black leading-none tracking-tighter title-gradient">DARIAN.</h1>
+        <div className="h-0.5 w-full bg-gradient-to-r from-cyan-400/50 to-transparent mt-10"></div>
       </header>
       
       {isLoading ? (
-        <div className="text-white/10 text-4xl font-black italic animate-pulse">SYSTEM_LOADING...</div>
+        <div className="text-cyan-400 font-black animate-pulse tracking-[2em]">SYNCING...</div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {posts?.map((post: any) => <PostCard key={post.id} post={post} />)}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {posts?.slice(0, 6).map((post: any) => <PostCard key={post.id} post={post} />)}
         </div>
       )}
     </main>

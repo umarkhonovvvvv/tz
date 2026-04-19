@@ -13,29 +13,35 @@ export default function PostDetailsPage() {
   if (!post) return null;
 
   return (
-    <main className="min-h-screen bg-[#050b14] p-6 md:p-24 flex items-center justify-center relative overflow-hidden text-white">
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.05),transparent)] pointer-events-none"></div>
+    <main className="min-h-screen flex flex-col p-10 md:p-20 justify-between relative">
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(0,242,255,0.1),transparent)]" />
       
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-6xl aspect-video bg-white/[0.02] backdrop-blur-3xl border border-white/10 rounded-[40px] p-12 md:p-24 relative shadow-2xl"
-      >
-        <button onClick={() => router.back()} className="absolute top-12 left-12 text-cyan-400 font-black tracking-widest text-[10px] uppercase hover:opacity-50 transition-all">
-          ← Back
-        </button>
+      <button onClick={() => router.back()} className="z-10 text-white/20 hover:text-cyan-400 font-black tracking-[0.5em] text-[10px] uppercase transition-all">
+        [ Esc_Back ]
+      </button>
 
-        <div className="h-full flex flex-col justify-center">
-          <div className="text-cyan-400/50 font-black tracking-[0.5em] uppercase text-[10px] mb-8">Node_System / {id}</div>
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-12 uppercase italic">
-            {post.title}
-          </h1>
-          <div className="w-24 h-1 bg-cyan-400 mb-16 shadow-[0_0_15px_rgba(0,242,255,0.5)]"></div>
-          <p className="text-white/60 text-2xl md:text-3xl font-light leading-snug max-w-4xl">
-            {post.body}
-          </p>
-        </div>
+      <motion.div 
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="max-w-6xl"
+      >
+        <span className="text-cyan-400 text-xs font-bold tracking-[1em] uppercase mb-10 block">System_Node_Data</span>
+        <h1 className="text-7xl md:text-[12vw] font-black leading-[0.8] tracking-tighter title-gradient uppercase mb-20">
+          {post.title}
+        </h1>
+        <p className="text-white/40 text-2xl md:text-4xl font-light leading-tight max-w-4xl italic">
+          "{post.body}"
+        </p>
       </motion.div>
+
+      <div className="flex justify-between items-end border-t border-white/5 pt-10">
+        <div className="text-[10px] font-mono text-white/10 uppercase tracking-widest">
+          Build: 2026.04.19 // Sector: {id}
+        </div>
+        <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center animate-bounce">
+          <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full" />
+        </div>
+      </div>
     </main>
   );
 }
