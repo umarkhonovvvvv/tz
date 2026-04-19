@@ -2,17 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-[#030612] text-slate-100 antialiased;
-    background-image: 
-      radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.12) 0px, transparent 40%),
-      radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.08) 0px, transparent 30%);
-    min-height: 100vh;
-  }
+:root {
+  --bg-dark: #030612;
+  --accent-blue: #38bdf8;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.07);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #f1f5f9;
+  min-height: 100vh;
+  margin: 0;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 40%);
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .premium-card {
-  @apply bg-white/3 backdrop-blur-sm border border-white/5 hover:border-white/10 hover:bg-white/5 transition-all duration-300;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(56, 189, 248, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
