@@ -1,46 +1,40 @@
-﻿@tailwind base;
-@tailwind components;
-@tailwind utilities;
+﻿@tailwind base; @tailwind components; @tailwind utilities;
 
 :root {
-  --neon-cyan: #00f2ff;
-  --bg-deep: #020408;
-  --panel-bg: rgba(255, 255, 255, 0.02);
-  --border-light: rgba(255, 255, 255, 0.06);
+  --app-bg: #0d0f14;
+  --card-bg: #161a22;
+  --accent-orange: #ff7e5f;
+  --accent-pink: #feb47b;
 }
 
 body {
-  background-color: var(--bg-deep);
-  color: #fff;
-  font-family: "Inter", -apple-system, sans-serif;
+  background-color: var(--app-bg);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-/* Moving Aura Background */
-.aura-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.08) 0%, transparent 60%);
+.food-card {
+  background: var(--card-bg);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glass-card {
-  background: var(--panel-bg);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid var(--border-light);
-  border-radius: 28px;
-  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+.food-card:hover {
+  transform: translateY(-8px);
+  background: #1c212b;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-.glass-card:hover {
-  border-color: rgba(0, 242, 255, 0.3);
-  box-shadow: 0 0 50px rgba(0, 242, 255, 0.06);
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
+  border-radius: 16px;
+  color: white;
+  font-weight: 700;
+  transition: transform 0.2s;
 }
 
-.text-master {
-  background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.btn-primary:active {
+  transform: scale(0.95);
 }

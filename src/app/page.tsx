@@ -2,32 +2,27 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchPosts } from "@/shared/api";
 import { PostCard } from "@/entities/post/ui/post-card";
-import { motion } from "framer-motion";
 
 export default function HomePage() {
   const { data: posts, isLoading } = useQuery({ queryKey: ["posts"], queryFn: fetchPosts });
 
   return (
-    <main className="max-w-[1500px] mx-auto py-24 px-10 relative">
-      <div className="aura-bg"></div>
-      
-      <motion.header 
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        className="mb-32"
-      >
-        <h1 className="text-[12vw] font-black tracking-tighter leading-[0.8] text-master uppercase italic mb-8">
-          Darian<br/>Stations.
-        </h1>
-        <div className="h-0.5 w-full bg-gradient-to-r from-cyan-400 to-transparent mt-10 shadow-[0_0_15px_rgba(0,242,255,0.5)]"></div>
-      </motion.header>
-      
+    <main className="max-w-[1400px] mx-auto py-20 px-6">
+      <header className="flex justify-between items-center mb-24">
+        <div>
+          <h1 className="text-4xl font-black tracking-tight mb-2">Hello, User!</h1>
+          <p className="text-white/30 font-medium tracking-wide uppercase text-[10px]">Your IT Ecosystem Dashboard</p>
+        </div>
+        <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-400 to-pink-500 border border-white/10 shadow-xl flex items-center justify-center font-bold italic">U</div>
+      </header>
+
       {isLoading ? (
-        <div className="text-cyan-400 font-mono tracking-widest text-xs uppercase animate-pulse">SYNCHRONISING_SYSTEM_NODES...</div>
+        <div className="flex gap-4 animate-pulse">
+           {[1,2,3].map(i => <div key={i} className="h-64 flex-1 bg-white/5 rounded-[32px]"></div>)}
+        </div>
       ) : (
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
-          {posts?.map((post: any) => <PostCard key={post.id} post={post} />)}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts?.slice(0, 9).map((post: any) => <PostCard key={post.id} post={post} />)}
         </div>
       )}
     </main>
