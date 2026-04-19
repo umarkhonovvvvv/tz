@@ -1,34 +1,36 @@
-﻿@tailwind base; @tailwind components; @tailwind utilities;
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --neon-blue: #00f2ff;
-  --deep-violet: #7000ff;
-  --bg-black: #03040a;
+  --bg: #000205;
+  --accent: #00f2ff;
 }
+
 body {
-  background: var(--bg-black);
+  background: var(--bg);
   color: #fff;
-  letter-spacing: -0.02em;
+  overflow-x: hidden;
   font-family: "Inter", sans-serif;
 }
-/* Premium Gradient Animation */
-.bg-glow {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-  background: radial-gradient(800px circle at 100% 0%, rgba(0,242,255,0.05), transparent),
-              radial-gradient(600px circle at 0% 100%, rgba(112,0,255,0.05), transparent);
+
+/* Moving Light Background */
+.live-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.03) 0%, transparent 50%);
+  z-index: -1;
+  animation: moveLight 20s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
-.bento-card {
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(40px);
+
+@keyframes moveLight {
+  0% { transform: translate(-20%, -20%) scale(1.2); }
+  100% { transform: translate(20%, 20%) scale(0.8); }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-}
-.bento-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 0 100px rgba(0,242,255,0.05);
-}
-.text-reveal {
-  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.4) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  transition: all 0.5s ease;
 }
