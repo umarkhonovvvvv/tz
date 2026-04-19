@@ -1,40 +1,35 @@
-﻿@tailwind base; @tailwind components; @tailwind utilities;
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --app-bg: #0d0f14;
-  --card-bg: #161a22;
-  --accent-orange: #ff7e5f;
-  --accent-pink: #feb47b;
+  --bg-obsidian: #020408;
+  --surface-navy: #0d1117;
+  --electric-cyan: #00f2ff;
+  --border-subtle: rgba(255, 255, 255, 0.05);
 }
 
-body {
-  background-color: var(--app-bg);
-  color: #ffffff;
-  font-family: "Inter", sans-serif;
-  -webkit-font-smoothing: antialiased;
+@layer base {
+  body {
+    @apply bg-[var(--bg-obsidian)] text-white antialiased selection:bg-cyan-500/30;
+    font-family: "Inter", sans-serif;
+  }
 }
 
-.food-card {
-  background: var(--card-bg);
-  border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+@layer components {
+  .premium-glass {
+    @apply relative overflow-hidden transition-all duration-500 bg-[var(--surface-navy)] border border-[var(--border-subtle)] rounded-[32px] backdrop-blur-[20px];
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.01);
+  }
 }
 
-.food-card:hover {
-  transform: translateY(-8px);
-  background: #1c212b;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+.aura-container {
+  position: fixed; inset: 0; z-index: -1;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.03) 0%, transparent 70%);
+  animation: breath 8s infinite ease-in-out;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));
-  border-radius: 16px;
-  color: white;
-  font-weight: 700;
-  transition: transform 0.2s;
-}
-
-.btn-primary:active {
-  transform: scale(0.95);
+@keyframes breath {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
 }
