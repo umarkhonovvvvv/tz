@@ -1,34 +1,45 @@
-﻿@tailwind base; @tailwind components; @tailwind utilities;
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --neon-cyan: #00f2ff;
-  --bg-dark: #020408;
+  --bg-deep: #020408;
   --panel-bg: rgba(255, 255, 255, 0.02);
-  --border-light: rgba(255, 255, 255, 0.05);
+  --border-light: rgba(255, 255, 255, 0.06);
 }
+
 body {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-deep);
   color: #fff;
   font-family: "Inter", -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
-/* Live Background Light Aura */
+
+/* Moving Aura Background */
 .aura-bg {
-  position: fixed; inset: 0; z-index: -1;
-  background: radial-gradient(circle at 50% -20%, rgba(0,242,255,0.06) 0%, transparent 60%);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% -20%, rgba(0, 242, 255, 0.08) 0%, transparent 60%);
 }
-.glass-panel {
+
+.glass-card {
   background: var(--panel-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border: 1px solid var(--border-light);
-  border-radius: 24px;
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 28px;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
-.glass-panel:hover {
+
+.glass-card:hover {
   border-color: rgba(0, 242, 255, 0.3);
-  box-shadow: 0 0 40px rgba(0,242,255,0.05);
+  box-shadow: 0 0 50px rgba(0, 242, 255, 0.06);
 }
-.text-premium {
+
+.text-master {
   background: linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.6) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
