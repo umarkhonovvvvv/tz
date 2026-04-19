@@ -16,10 +16,10 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-32 max-w-3xl"
         >
-          <div className="inline-block px-4 py-1.5 rounded-full bg-cyan-500/5 border border-cyan-500/10 text-cyan-400 text-[10px] font-bold tracking-[0.2em] uppercase mb-8">
+          <div className="inline-block px-4 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-[#00f2ff] text-[10px] font-bold tracking-[0.2em] uppercase mb-8">
             Operational Intelligence System v1.0
           </div>
-          <h1 className="font-extrabold tracking-[-0.05em] leading-[1.1] text-[clamp(3rem,8vw,6rem)] mb-10">
+          <h1 className="font-extrabold tracking-[-0.05em] leading-[1.1] text-6xl md:text-8xl mb-10">
             Darian <span className="text-white/20 italic font-light">Ecosystem.</span>
           </h1>
           <p className="font-light leading-relaxed text-white/60 text-xl max-w-xl">
@@ -29,7 +29,7 @@ export default function HomePage() {
 
         {isLoading ? (
           <div className="flex items-center space-x-4 animate-pulse">
-            <span className="font-mono text-xs uppercase tracking-[0.5em] text-cyan-500/50">Initialising...</span>
+            <span className="font-mono text-xs uppercase tracking-[0.5em] text-[#00f2ff]">Initialising...</span>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,3 +41,4 @@ export default function HomePage() {
       </div>
     </main>
   );
+}
