@@ -1,14 +1,22 @@
 ﻿import Link from "next/link";
+
 export const PostCard = ({ post }: { post: any }) => (
-  <div className="group relative bg-slate-900/50 border border-slate-800 rounded-2xl p-6 hover:bg-slate-800/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-1 flex flex-col h-full">
+  <div className="premium-card p-7 rounded-3xl flex flex-col h-full group">
+    <div className="flex items-center gap-2.5 mb-5 text-[#38bdf8] italic font-semibold text-xs tracking-wider">
+      <div className="w-1.5 h-1.5 bg-[#38bdf8] rounded-full animate-pulse"></div>
+      TECHNOLOGY
+    </div>
     <div className="flex-grow">
-      <h2 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{post.title}</h2>
-      <p className="text-slate-400 text-sm leading-relaxed line-clamp-3">{post.body}</p>
+      <h2 className="text-2xl font-black mb-4 group-hover:text-[#38bdf8] transition-colors leading-tight tracking-tighter">
+        {post.title}
+      </h2>
+      <p className="text-slate-400 text-sm leading-relaxed mb-8">
+        {post.body}
+      </p>
     </div>
-    <div className="mt-6">
-      <Link href={`/posts/${post.id}`} className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-900/20 active:scale-95">
-        Детальніше
-      </Link>
-    </div>
+    <Link href={`/posts/${post.id}`} className="inline-flex items-center justify-center w-fit px-6 py-3 bg-[#38bdf8]/5 text-[#38bdf8] border border-[#38bdf8]/20 rounded-xl hover:bg-[#38bdf8] hover:text-white transition-all active:scale-95 text-xs font-bold uppercase tracking-widest">
+      Детальніше
+      <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 5l7 7-7 7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+    </Link>
   </div>
 );
