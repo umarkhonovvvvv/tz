@@ -7,22 +7,23 @@ export default function HomePage() {
   const { data: posts, isLoading } = useQuery({ queryKey: ["posts"], queryFn: fetchPosts });
 
   return (
-    <main className="p-8 md:p-16 min-h-screen">
-      <div className="max-w-7xl mx-auto">
-        <header className="mb-20 text-center relative">
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tighter">
-            БЛОГ ТЕХНОЛОГІЙ
+    <main className="relative min-h-screen px-6 py-24 md:px-20">
+      <div className="mesh-bg"></div>
+      
+      <div className="max-w-[1400px] mx-auto">
+        <header className="mb-32">
+          <h1 className="text-[12vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter text-gradient uppercase">
+            Data<br/>Evolution
           </h1>
-          <div className="h-1.5 w-24 bg-[#38bdf8] mx-auto rounded-full mb-6"></div>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-            Сучасний погляд на розробку програмного забезпечення, ІТ-тенди та інновації.
+          <p className="mt-12 text-slate-500 text-xl md:text-2xl max-w-xl font-light leading-relaxed">
+            S SF Marketplace — keyingi avlod B2B platformasi.
           </p>
         </header>
 
         {isLoading ? (
-          <div className="text-white text-center py-20 animate-pulse text-lg">Завантаження...</div>
+          <div className="h-96 flex items-center justify-center text-cyan-500 animate-pulse text-4xl font-black italic">LOADING SYSTEM...</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {posts?.map((post: any) => (
               <PostCard key={post.id} post={post} />
             ))}
