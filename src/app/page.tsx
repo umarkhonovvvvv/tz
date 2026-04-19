@@ -4,21 +4,31 @@ import { fetchPosts } from "@/shared/api";
 import { PostCard } from "@/entities/post/ui/post-card";
 
 export default function HomePage() {
-  const { data: posts, isLoading } = useQuery({ queryKey: ["posts"], queryFn: fetchPosts });
+  const { data: posts, isLoading } = useQuery({ 
+    queryKey: ["posts"], 
+    queryFn: fetchPosts 
+  });
+
   return (
-    <div className="min-h-screen bg-black py-16 px-4">
+    <main className="p-8 bg-[#020617] min-h-screen">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-white text-center mb-12">БЛОГ ТЕХНОЛОГІЙ</h1>
+        <h1 className="text-4xl font-black text-white text-center mb-12 uppercase tracking-tighter">
+          Блог Технологій
+        </h1>
         {isLoading ? (
-          <div className="text-white text-center">Завантаження...</div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1,2,3,4,5,6].map(i => (
+              <div key={i} className="h-64 bg-slate-900 rounded-2xl animate-pulse" />
+            ))}
+          </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {posts?.map((post: any) => (
               <PostCard key={post.id} post={post} />
             ))}
           </div>
         )}
       </div>
-    </div>
+    </main>
   );
 }
